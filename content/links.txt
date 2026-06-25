@@ -1,0 +1,21 @@
+# Each line: Label | URL or path
+# Sections: [github_projects] [articles] [documents] [socials]
+# .tex paths are converted to .html automatically by build.py
+
+[github_projects]
+Project Alpha | https://github.com/yourname/project-alpha
+Project Beta | https://github.com/yourname/project-beta
+
+[articles]
+Example Article | articles/example.tex
+
+[documents]
+Curriculum Vitae | docs/cv.tex
+Statement of Purpose | docs/sop.tex
+
+[socials]
+GitHub | https://github.com/giusber2005
+Stack Overflow | https://stackoverflow.com/users/26305304/giusber2005
+Stack Exchange | https://stackexchange.com/users/33948362/giusber2005
+Email | mailto:giusber2005@gmail.com
+
