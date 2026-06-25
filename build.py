@@ -38,6 +38,21 @@ def home_rel(html_file):
     return os.path.relpath('index.html', Path(html_file).parent)
 
 
+def tex_to_pdf(tex_path: Path) -> bool:
+    try:
+        r = subprocess.run(
+            ['pdflatex', '-interaction=nonstopmode', tex_path.name],
+            capture_output=True, text=True,
+            cwd=str(tex_path.parent)
+        )
+        if r.returncode != 0:
+            print(f'  pdflatex error: {r.stderr.strip() or r.stdout.strip()}')
+        return r.returncode == 0
+    except FileNotFoundError:
+        print('  pdflatex not found — skipping PDF')
+        return False
+
+
 def tex_to_html(tex_path: Path, html_path: Path) -> bool:
     css = css_rel(html_path)
     nav = f'<nav><a href="{home_rel(html_path)}">← home</a></nav>'
@@ -88,9 +103,11 @@ def raw_fallback(tex_path: Path, html_path: Path):
 def process_tex(target: str) -> str:
     tex = Path(target)
     html = tex.with_suffix('.html')
-    print(f'  {tex} -> {html}')
+    pdf = tex.with_suffix('.pdf')
+    print(f'  {tex} -> {html}, {pdf}')
     if not tex_to_html(tex, html):
         raw_fallback(tex, html)
+    tex_to_pdf(tex)
     return str(html)
 
 
@@ -112,10 +129,12 @@ def generate_index(intro: str, links: dict) -> str:
         if not items:
             continue
         title = section_titles.get(key, key.replace('_', ' ').title())
-        lis = '\n'.join(
-            f'    <li><a href="{url}">{label}</a></li>'
-            for label, url in items
-        )
+        def item_html(label, url):
+            pdf = Path(url).with_suffix('.pdf')
+            pdf_link = f' <a href="{pdf}">[pdf]</a>' if pdf.exists() else ''
+            return f'    <li><a href="{url}">{label}</a>{pdf_link}</li>'
+
+        lis = '\n'.join(item_html(label, url) for label, url in items)
         sections_html += f'\n<h2>{title}</h2>\n<ul>\n{lis}\n</ul>'
 
     return f"""<!DOCTYPE html>

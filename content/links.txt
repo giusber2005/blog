@@ -11,7 +11,6 @@ Example Article | articles/example.tex
 
 [documents]
 Curriculum Vitae | docs/cv.tex
-Statement of Purpose | docs/sop.tex
 
 [socials]
 GitHub | https://github.com/giusber2005
