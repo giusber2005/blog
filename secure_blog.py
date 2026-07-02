@@ -72,12 +72,11 @@ def main():
         calculate()
     elif sys.argv[1] == 'verify' and len(sys.argv) == 3:
         target = sys.argv[2]
-        manifest = json.loads(Path(MANIFEST).read_text())
-        if target not in manifest["files"]:
-            print(f"not in manifest: {target}")
+        try:
+            ok = verify_proof(target, MANIFEST)
+        except KeyError as e:
+            print(e)
             sys.exit(1)
-        entry = manifest["files"][target]
-        ok = verify_proof(Path(target).read_bytes(), entry["proof"], manifest["root"])
         print(f"{'OK' if ok else 'TAMPERED'}: {target}")
         sys.exit(0 if ok else 1)
     else:
