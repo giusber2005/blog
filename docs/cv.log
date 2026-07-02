@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex 2026.6.17)  25 JUN 2026 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex 2026.6.17)  2 JUL 2026 15:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -62,7 +62,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 )
-No file cv.aux.
+(./cv.aux)
 \openout1 = `cv.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -79,6 +79,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -138,10 +139,10 @@ L3 programming layer <2026-05-15>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1382 strings out of 469330
- 23051 string characters out of 5466444
+ 1385 strings out of 469330
+ 23084 string characters out of 5466444
  440165 words of memory out of 5000000
- 30274 multiletter control sequences out of 15000+600000
+ 30275 multiletter control sequences out of 15000+600000
  631669 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,6n,65p,218b,200s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -150,7 +151,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on cv.pdf (1 page, 74922 bytes).
+Output written on cv.pdf (1 page, 74836 bytes).
 PDF statistics:
  33 PDF objects out of 1000 (max. 8388607)
  19 compressed objects within 1 object stream

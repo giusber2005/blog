@@ -1,6 +1,9 @@
 # Each line: Label | URL or path
-# Sections: [github_projects] [articles] [documents] [socials]
+# Sections: [root_hash] [github_projects] [articles] [documents] [socials]
 # .tex paths are converted to .html automatically by build.py
+
+[root_hash]
+
 
 [github_projects]
 Project Alpha | https://github.com/yourname/project-alpha

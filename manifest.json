@@ -1,0 +1,124 @@
+{
+  "root": "4ebbf39d2f83807aac926994cec6cc463239dce471df492d1371902c6d4c03a0",
+  "files": {
+    "content/intro.txt": {
+      "hash": "521ccd0eaeb45d4a44b758002b76b677e31a3c64a1d0745685d49c1222b85b69",
+      "proof": [
+        {
+          "hash": "e6d0843f82de5845e7be5c4e66266e8835e83780fe5a0275f58abab0eaab7cf7",
+          "position": "right"
+        },
+        {
+          "hash": "8eb2e8c2df40c9c5916b8680eb109a4fbc1d4aa7b644a86ddc13dfeace3ac57e",
+          "position": "right"
+        },
+        {
+          "hash": "26721d8e85e4e39b0f578ddaf7128ac7dfc98c0d2e1abcdb3fe24cb4850c10a8",
+          "position": "right"
+        }
+      ]
+    },
+    "content/links.txt": {
+      "hash": "e6d0843f82de5845e7be5c4e66266e8835e83780fe5a0275f58abab0eaab7cf7",
+      "proof": [
+        {
+          "hash": "521ccd0eaeb45d4a44b758002b76b677e31a3c64a1d0745685d49c1222b85b69",
+          "position": "left"
+        },
+        {
+          "hash": "8eb2e8c2df40c9c5916b8680eb109a4fbc1d4aa7b644a86ddc13dfeace3ac57e",
+          "position": "right"
+        },
+        {
+          "hash": "26721d8e85e4e39b0f578ddaf7128ac7dfc98c0d2e1abcdb3fe24cb4850c10a8",
+          "position": "right"
+        }
+      ]
+    },
+    "articles/example.pdf": {
+      "hash": "c49120d153d9404e6495294e024836fab3d8b8208da3538cdf1b7089a21d5ebe",
+      "proof": [
+        {
+          "hash": "ee7e5cc068ef6fed3f9ae29976eddc3d8b34e5247893cab7cdaa0ed93c3d80cc",
+          "position": "right"
+        },
+        {
+          "hash": "c7c8a66f248cf3eb8f492f0f9070d4976c1b378eaaca75fd3d00ec3a174ca30d",
+          "position": "left"
+        },
+        {
+          "hash": "26721d8e85e4e39b0f578ddaf7128ac7dfc98c0d2e1abcdb3fe24cb4850c10a8",
+          "position": "right"
+        }
+      ]
+    },
+    "articles/example.tex": {
+      "hash": "ee7e5cc068ef6fed3f9ae29976eddc3d8b34e5247893cab7cdaa0ed93c3d80cc",
+      "proof": [
+        {
+          "hash": "c49120d153d9404e6495294e024836fab3d8b8208da3538cdf1b7089a21d5ebe",
+          "position": "left"
+        },
+        {
+          "hash": "c7c8a66f248cf3eb8f492f0f9070d4976c1b378eaaca75fd3d00ec3a174ca30d",
+          "position": "left"
+        },
+        {
+          "hash": "26721d8e85e4e39b0f578ddaf7128ac7dfc98c0d2e1abcdb3fe24cb4850c10a8",
+          "position": "right"
+        }
+      ]
+    },
+    "docs/cv.pdf": {
+      "hash": "97227a3bfba917c3287178eaf7623a65e00659d9c498f3af5bb4b5ffa7a84817",
+      "proof": [
+        {
+          "hash": "6c28494404ff738631ae32fb99b110b03720cbf37761d1226345559d888f9e19",
+          "position": "right"
+        },
+        {
+          "hash": "57e2ded623b7ac137a3248f1f402264b3efaf484d7e7e34a2115ff5d80cd843e",
+          "position": "right"
+        },
+        {
+          "hash": "1eff909efcd25e6aa05c1e76f863d128a78ceb9ae0b3080f072d5d623f68090c",
+          "position": "left"
+        }
+      ]
+    },
+    "docs/cv.tex": {
+      "hash": "6c28494404ff738631ae32fb99b110b03720cbf37761d1226345559d888f9e19",
+      "proof": [
+        {
+          "hash": "97227a3bfba917c3287178eaf7623a65e00659d9c498f3af5bb4b5ffa7a84817",
+          "position": "left"
+        },
+        {
+          "hash": "57e2ded623b7ac137a3248f1f402264b3efaf484d7e7e34a2115ff5d80cd843e",
+          "position": "right"
+        },
+        {
+          "hash": "1eff909efcd25e6aa05c1e76f863d128a78ceb9ae0b3080f072d5d623f68090c",
+          "position": "left"
+        }
+      ]
+    },
+    "docs/sop.tex": {
+      "hash": "c0276b38ffbf8be7822aa08b56625dcfea57e09a81b4337eb1e64cbe2421015f",
+      "proof": [
+        {
+          "hash": "c0276b38ffbf8be7822aa08b56625dcfea57e09a81b4337eb1e64cbe2421015f",
+          "position": "right"
+        },
+        {
+          "hash": "17c27976154a45028ed2123bc8e445402ce96af929a642322baaa02fc8a66557",
+          "position": "left"
+        },
+        {
+          "hash": "1eff909efcd25e6aa05c1e76f863d128a78ceb9ae0b3080f072d5d623f68090c",
+          "position": "left"
+        }
+      ]
+    }
+  }
+}

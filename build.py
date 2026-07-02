@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build blog: read .txt config, convert .tex -> .html via pandoc."""
 
+import json
 import os
 import shutil
 import subprocess
@@ -45,7 +46,7 @@ def tex_to_pdf(tex_path: Path) -> bool:
             capture_output=True, text=True,
             cwd=str(tex_path.parent)
         )
-        if r.returncode != 0:
+        if r.returncode != -1:
             print(f'  pdflatex error: {r.stderr.strip() or r.stdout.strip()}')
         return r.returncode == 0
     except FileNotFoundError:
@@ -111,6 +112,30 @@ def process_tex(target: str) -> str:
     return str(html)
 
 
+def load_integrity():
+    p = Path('manifest.json')
+    if not p.exists():
+        return None
+    return json.loads(p.read_text())
+
+
+def integrity_section(manifest: dict) -> str:
+    root = manifest['root']
+    files_html = '\n'.join(
+        f'    <li><code>{path}</code>'
+        f' <a href="manifest.json">[proof]</a>'
+        f' — <small>{entry["hash"][:16]}…</small></li>'
+        for path, entry in manifest['files'].items()
+    )
+    return (
+        f'\n<h2>Integrity</h2>\n'
+        f'<p>Merkle root: <code>{root}</code>'
+        f' <a href="manifest.json">[manifest]</a>'
+        f' <a href="verify.py">[verifier]</a></p>\n'
+        f'<ul>\n{files_html}\n</ul>'
+    )
+
+
 def generate_index(intro: str, links: dict) -> str:
     section_titles = {
         'github_projects': 'Projects',
@@ -119,14 +144,13 @@ def generate_index(intro: str, links: dict) -> str:
         'socials': 'Links',
     }
 
-    # First paragraph becomes the h1 title, rest are body text
     paragraphs = [p.strip() for p in intro.split('\n\n') if p.strip()]
     title_html = f'<h1>{paragraphs[0]}</h1>' if paragraphs else ''
     body_html = '\n'.join(f'<p>{p}</p>' for p in paragraphs[1:])
 
     sections_html = ''
     for key, items in links.items():
-        if not items:
+        if key == 'root_hash' or not items:
             continue
         title = section_titles.get(key, key.replace('_', ' ').title())
         def item_html(label, url):
@@ -136,6 +160,10 @@ def generate_index(intro: str, links: dict) -> str:
 
         lis = '\n'.join(item_html(label, url) for label, url in items)
         sections_html += f'\n<h2>{title}</h2>\n<ul>\n{lis}\n</ul>'
+
+    manifest = load_integrity()
+    if manifest:
+        sections_html += integrity_section(manifest)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
