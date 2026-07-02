@@ -121,22 +121,15 @@ def load_integrity():
 
 def integrity_section(manifest: dict) -> str:
     root = manifest['root']
-    files_html = '\n'.join(
-        f'    <li><code>{path}</code>'
-        f' <a href="manifest.json">[proof]</a>'
-        f' — <small>{entry["hash"][:16]}…</small></li>'
-        for path, entry in manifest['files'].items()
-    )
     return (
         f'\n<h2>Integrity</h2>\n'
         f'<p>Merkle root: <code>{root}</code>'
         f' <a href="manifest.json">[manifest]</a>'
-        f' <a href="verify.py">[verifier]</a></p>\n'
-        f'<ul>\n{files_html}\n</ul>'
+        f' <a href="verify.py">[verifier]</a></p>'
     )
 
 
-def generate_index(intro: str, links: dict) -> str:
+def generate_index(intro: str, links: dict, manifest: dict = None) -> str:
     section_titles = {
         'github_projects': 'Projects',
         'articles': 'Articles',
@@ -153,10 +146,17 @@ def generate_index(intro: str, links: dict) -> str:
         if key == 'root_hash' or not items:
             continue
         title = section_titles.get(key, key.replace('_', ' ').title())
-        def item_html(label, url):
+        def item_html(label, url, manifest=manifest):
             pdf = Path(url).with_suffix('.pdf')
             pdf_link = f' <a href="{pdf}">[pdf]</a>' if pdf.exists() else ''
-            return f'    <li><a href="{url}">{label}</a>{pdf_link}</li>'
+            proof_link = ''
+            if manifest:
+                for ext in ('.tex', '.pdf', '.txt', ''):
+                    candidate = str(Path(url).with_suffix(ext)) if ext else url
+                    if candidate in manifest['files']:
+                        proof_link = ' <a href="manifest.json">[proof]</a>'
+                        break
+            return f'    <li><a href="{url}">{label}</a>{pdf_link}{proof_link}</li>'
 
         lis = '\n'.join(item_html(label, url) for label, url in items)
         sections_html += f'\n<h2>{title}</h2>\n<ul>\n{lis}\n</ul>'
@@ -196,7 +196,7 @@ def build():
                 target = process_tex(target)
             resolved[section].append((label, target))
 
-    html = generate_index(intro, resolved)
+    html = generate_index(intro, resolved, load_integrity())
     Path('index.html').write_text(html)
     print('Done → index.html')
 
